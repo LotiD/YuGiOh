@@ -66,14 +66,49 @@ const Page = () => {
                     {selectedItem && (
                         <div>
                             <h2>Carte sélectionnée :</h2>
-                            <div>{selectedItem.name}</div>
-                            <div>{selectedItem.type}</div>
-                            {selectedItem.archetype && (<div>Archetype: {selectedItem.archetype}</div>)}
+                            <div className='flex'>
+                                {/*Nom de la carte*/}
+                                <div className='flex-1 border border-sky-600 pl-1 py-3'>{selectedItem.name}</div>
+                                {/*Type de carte Monstre/Magie/Piège etc...*/}
+                                <div className='flex-1 border border-sky-600 pl-1 py-3'>{selectedItem.type}</div>
+                            </div>
+
+                            <div className='flex'>
+                                {/*Archetype*/}
+                                {selectedItem.archetype && (<div className='flex-1 border border-sky-600 pl-1 py-3'>Archetype: {selectedItem.archetype}</div>)}
+                                {/*Niveau*/}
+                                {selectedItem.level && (<div className='flex-1 border border-sky-600 pl-1 py-3'>Niveau: {selectedItem.level}</div>)}
+                                {/*Niveau des Monstres Link*/}
+                                {selectedItem.linkval && (<div className='flex-1 border border-sky-600 pl-1 py-3'>Link: {selectedItem.linkval}</div>)}
+                            </div>
+
+                            <div className='flex border border-sky-600 pl-1 py-3'>
+                                {/*Image de la carte*/}
+                                <img src={selectedItem.card_images[0].image_url_small} alt={selectedItem.name}/>
+                            </div>
+
+                            {/*Type de Piege/Magie */}
+                            {!selectedItem.atk && (<div className='flex border border-sky-600 pl-1 py-3'>Type: {selectedItem.race}</div>)}
                             
-                            {selectedItem.level && (<div>Niveau: {selectedItem.level}</div>)}
-                            <img src={selectedItem.card_images[0].image_url_small} alt={selectedItem.name}/>
-                            <div>{selectedItem.desc}</div>
-                            {/* Affichez ici d'autres informations sur l'élément si nécessaire */}
+                            <div className='flex'>
+                                {/*Race du Monstre*/}
+                                {selectedItem.atk && (<div className='flex-1 border border-sky-600 pl-1 py-3'>Race: {selectedItem.race}</div>)}
+                                {/*Attribut du Monstre: Feu/Eau etc...*/}
+                                {selectedItem.attribute && (<div className='flex-1 border border-sky-600 pl-1 py-3'>Attribut: {selectedItem.attribute}</div>)}
+                            </div>
+                            
+                            {/*Echelle Pendume*/}
+                            {selectedItem.scale && (<div className='flex-1 border border-sky-600 pl-1 py-3'>Echelle Pendule: {selectedItem.scale}</div>)}
+                            
+                            {/*Effet ou Description*/}
+                            <div className='flex border border-sky-600 pl-1 py-3'>{selectedItem.desc}</div>
+                            
+                            {/*ATK pas fiable et DEF*/}
+                            <div className='flex'>
+                                {selectedItem.atk && (<div className='flex-1 border border-sky-600 pl-1 py-3'>ATK: {selectedItem.atk}</div>)}
+                                {selectedItem.level && (<div className='flex-1 border border-sky-600 pl-1 py-3'>DEF: {selectedItem.def}</div>)}
+                            </div>
+
                         </div>
                         
                     )}
